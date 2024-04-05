@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonial Card</title>
+  <style>
+    .testimonial-card-container {
+      width: 80%;
+      margin: 20px auto;
+      overflow: hidden;
+      position: relative;
+      display: flex; 
+      flex-direction: row;
+       
+    }
+    
+    .testimonial-card {
+      width: 100%;
+      color:aliceblue;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: black;
+      border-radius: 10px;
+      padding: 20px;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    
+    }
+    .testimonial-card.active {
+      opacity: 1;
+    }
+    .testimonial-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+    h2 {
+        text-align: center;
+      font-size: 36px; 
+      color: #333;
+      margin-top: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-family: 'Arial', sans-serif; 
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1); 
+    }
+    .testimonial-card:hover {
+        background-color: rgb(20, 179, 41); 
+      color: #000; 
+    }
+    @media screen and (max-width: 768px) {
+        .testimonial-card-container{
+            flex-direction: column;
+        }
+    }
+  </style>
+</head>
+<body>
+ 
+    <h2>Client Testimonials</h2>
+    <div class="testimonial-card-container">
+        <div class="testimonial-card active">
+            <img src="https://www.kaartech.com/wp-content/uploads/2023/05/hw_client-img.png" alt="Reviewer 1">
+            <h3>John Doe</h3>
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales metus eu nunc tristique."</p>
+          </div>
+          <div class="testimonial-card">
+            <img src="https://www.kaartech.com/wp-content/uploads/2023/05/hw_client-img.png" alt="Reviewer 2">
+            <h3>Jane Smith</h3>
+            <p>"Praesent vel tortor ac arcu semper imperdiet. Vestibulum euismod ante eu nibh fringilla, eget consequat ipsum lacinia."</p>
+          </div>
+          <div class="testimonial-card">
+            <img src="https://www.kaartech.com/wp-content/uploads/2023/05/hw_client-img.png" alt="Reviewer 3">
+            <h3>Michael Johnson</h3>
+            <p>"Fusce ut bibendum libero. Vestibulum id dolor sollicitudin, maximus tortor in, aliquet libero."</p>
+          </div>
+    </div>
+  
+
+    <script>
+        let currentIndex = 0;
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const totalCards = testimonialCards.length;
+    
+        setInterval(() => {
+          const currentCard = testimonialCards[currentIndex];
+          currentCard.classList.remove('active');
+    
+          currentIndex = (currentIndex + 1) % totalCards;
+    
+          const nextCard = testimonialCards[currentIndex];
+          nextCard.classList.add('active');
+        }, 1500); 
+      </script>
+</body>
+</html>
